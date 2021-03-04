@@ -10,7 +10,10 @@ class Api::UsersController < ApplicationController
       last_name: params[:last_name],
       email: params[:email]
     )
-    @user.save
-    render "show.json.jb"
+    if @user.save
+      render "show.json.jb"
+    else
+      render json: {errors: @user.errors.full_messages}
+    end
   end
 end
