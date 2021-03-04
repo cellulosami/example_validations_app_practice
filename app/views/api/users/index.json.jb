@@ -1,1 +1,3 @@
-render partial: "users.json.jb"
+@users.map do |user|
+  render partial: "users.json.jb", locals: {user: user}
+end
